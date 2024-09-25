@@ -10,3 +10,6 @@ Second Task For Youssef Sherif Hassan
 -Selected the test size to be 25% of the data set.
 -Used linear regression to fit the model 
 -Mean squered error were used to understand the average between the errors and the values. 
+
+
+Colab link: https://colab.research.google.com/drive/1JEGj9ADqMvgd5XmbhunXp0RDBYVRofa0#scrollTo=4Ox3-zNnESvO
