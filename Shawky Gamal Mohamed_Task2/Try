@@ -1,1 +1,40 @@
-HI
+**1st approach:**
+
+all features are important with their type
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b0e2a3d8-8f58-42aa-a29e-e74d35e713b3/33516b5f-91e7-46d6-b8d5-bd93e7237df9/image.png)
+
+**2nd approach:**
+
+imbalance
+
+- Under Sampling
+    
+    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b0e2a3d8-8f58-42aa-a29e-e74d35e713b3/cdf669c3-8edf-4f57-8e13-0401f7595e56/image.png)
+    
+- Over Sampling
+    
+    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b0e2a3d8-8f58-42aa-a29e-e74d35e713b3/112ab7c7-bbbc-4088-9854-5747c454c260/image.png)
+    
+
+**3rd approach:**
+
+convert lead time
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b0e2a3d8-8f58-42aa-a29e-e74d35e713b3/57c3a219-da67-4bfe-b3cc-b52aa139caaf/image.png)
+
+**4th approach:**
+
+drop one of p-c or p-not c
+
+- remove p-c
+    
+    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b0e2a3d8-8f58-42aa-a29e-e74d35e713b3/10d242a0-f74f-4d7a-b5c2-cc80f3678def/image.png)
+    
+- removing both
+    
+    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b0e2a3d8-8f58-42aa-a29e-e74d35e713b3/214b46a2-9c31-4bd3-a35c-9e2522158654/image.png)
+    
+- removing p-not c
+    
+    Nothing change
