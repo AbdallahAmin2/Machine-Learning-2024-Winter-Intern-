@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #343a40;
+        }
+        h2 {
+            color: #6c757d;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            padding: 10px;
+            width: calc(50% - 12px);
+            margin-right: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .form-group input:last-child {
+            margin-right: 0;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cancellation Prediction</h1>
+    <h2>Please enter the following data:</h2>
+    <form action="/sub" method="POST">
+        <div class="form-group">
+            <h3>Number of Guests</h3>
+            <input type="text" name="number_of_adults" placeholder="Number of Adults">
+            <input type="text" name="number_of_children" placeholder="Number of Children">
+        </div>
+
+        <div class="form-group">
+            <h3>Booking Details</h3>
+            <input type="text" name="weekend_nights" placeholder="Number of Weekend Nights">
+            <input type="text" name="week_nights" placeholder="Number of Week Nights">
+        </div>
+
+        <div class="form-group">
+            <h3>Parking and Lead Time</h3>
+            <input type="text" name="car_parking_space" placeholder="Car Parking Space">
+            <input type="text" name="lead_time" placeholder="Lead Time">
+        </div>
+
+        <div class="form-group">
+            <h3>Special Requests</h3>
+            <input type="text" name="special_requests" placeholder="Special Requests">
+            <input type="text" name="repeated" placeholder="Repeated">
+        </div>
+
+        <div class="form-group">
+            <h3>Pricing Details</h3>
+            <input type="text" name="average_price" placeholder="Average Price">
+            <input type="text" name="P_C" placeholder="P-C">
+            <input type="text" name="P_not_C" placeholder="P-not-C">
+        </div>
+
+        <div class="form-group">
+            <h3>Room Types</h3>
+            {% for i in range(1, 8) %}
+                <input type="text" name="room_type_{{ i }}" placeholder="Room Type {{ i }}">
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Market Segments</h3>
+            {% for segment in ['Aviation', 'Complementary', 'Corporate', 'Offline', 'Online'] %}
+                <input type="text" name="market_segment_{{ segment }}" placeholder="Market Segment {{ segment }}">
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Meal Plans</h3>
+            {% for i in range(1, 4) %}
+                <input type="text" name="meal_plan_{{ i }}" placeholder="Meal Plan {{ i }}">
+            {% endfor %}
+            <input type="text" name="meal_not_selected" placeholder="Meal Not Selected">
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
