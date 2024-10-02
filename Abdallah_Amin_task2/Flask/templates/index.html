@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Hotel Reservation Cancellation Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Hotel Reservation Cancellation Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="lead_time">Lead Time:</label>
+            <input type="number" name="lead_time" required>
+
+            <label for="avg_price">Average Price:</label>
+            <input type="number" step="0.01" name="avg_price" required>
+
+            <label for="num_special_requests">Number of Special Requests:</label>
+            <input type="number" name="num_special_requests" required>
+
+            <label for="reservation_year">Reservation Year:</label>
+            <input type="number" name="reservation_year" required>
+
+            <label>Booking Method:</label>
+            <label><input type="radio" name="booking_method" value="Online" required> Online</label>
+            <label><input type="radio" name="booking_method" value="Onsite" required> Onsite</label>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if prediction is not none %}
+        <div class="result">
+            <h2>Reservation:</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
