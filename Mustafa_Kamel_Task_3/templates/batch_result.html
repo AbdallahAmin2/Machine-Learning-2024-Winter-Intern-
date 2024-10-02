@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Results</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-image">    
+            <h2 class="card-heading">Batch Prediction Results</h2>
+        </div>
+        <div class="card-form">
+            <h3>First 10 Predictions</h3>
+            <ul>
+                {% for row in view_limit %}
+                    <li>Lead Time: {{ row['lead time'] }}, Price: {{ row['average price'] }}, Requests: {{ row['special requests'] }},Market Segment Type: {{ row['Market Segment Type'] }} ,
+                        Prediction: {{ row['prediction'] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="action">
+            <a href="{{ url_for('download_file') }}" class="action-button">Download Full Results</a>
+        </div>
+    </div>
+</body>
+</html>
