@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Booking Classification</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-image">    
+            <h2 class="card-heading">Batch Prediction</h2>
+        </div>
+        <form class="card-form" action="{{ url_for('batch_predict') }}" method="POST" enctype="multipart/form-data">
+            <div class="input">
+                <input type="file" name="myfile" accept=".csv" class="input-field" required />
+                <label class="input-label">Upload CSV File</label>
+            </div> 
+            <div class="action">
+                <button type="submit" class="action-button">Upload and Predict</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+{% block title %}Booking Cancellation Prediction{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Enter Reservation Data</h2>
+
+  <form method="POST" action="/predict">
+
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="input-group">
+            <span class="input-group-text">Number of Adults</span>
+            <input type="number" class="form-control" name="adults" placeholder="Enter Number of Adults" value="{{ adults }}">
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Number of Children</span>
+                <input type="number" class="form-control" name="children" placeholder="Enter Number of Children" value="{{ children }}">
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="input-group">
+            <span class="input-group-text">Number of Weekend Nights</span>
+            <input type="number" class="form-control" name="weekend" placeholder="Enter Number of Weekend Nights" value="{{ weekend }}">
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="input-group">
+            <span class="input-group-text">Number of Week Nights</span>
+            <input type="number" class="form-control" name="week" placeholder="Enter Number of Week Nights" value="{{ week }}">
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="input-group">
+              <span class="input-group-text">Meal Plan Type</span>
+              <select class="form-select" name="meal_type" id="meal_type">
+                <option value="" disabled {{ 'selected' if not meal_type }}>Select</option>
+                <option value="Meal Plan 1" {{ 'selected' if meal_type == 'Meal Plan 1' }}>Meal Plan 1</option>
+                <option value="Meal Plan 2" {{ 'selected' if meal_type == 'Meal Plan 2' }}>Meal Plan 2</option>
+                <option value="Meal Plan 3" {{ 'selected' if meal_type == 'Meal Plan 3' }}>Meal Plan 3</option>
+                <option value="Not Selected" {{ 'selected' if meal_type == 'Not Selected' }}>Not Selected</option>
+              </select>
+            </div>
+          </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Car Parking Space (1 for Yes, 0 for No)</span>
+          <select class="form-select" name="parking" id="parking">
+            <option value="" disabled {{ 'selected' if not parking }}>Select</option>
+            <option value="1" {{ 'selected' if parking == '1' }}>1</option>
+            <option value="0" {{ 'selected' if parking == '0' }}>0</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Room Type</span>
+          <select class="form-select" name="room_type" id="room_type">
+            <option value="" disabled {{ 'selected' if not room_type }}>Select</option>
+            <option value="Room_Type 1" {{ 'selected' if room_type == 'Room_Type 1' }}>Room Type 1</option>
+            <option value="Room_Type 2" {{ 'selected' if room_type == 'Room_Type 2' }}>Room Type 2</option>
+            <option value="Room_Type 3" {{ 'selected' if room_type == 'Room_Type 3' }}>Room Type 3</option>
+            <option value="Room_Type 4" {{ 'selected' if room_type == 'Room_Type 4' }}>Room Type 4</option>
+            <option value="Room_Type 5" {{ 'selected' if room_type == 'Room_Type 5' }}>Room Type 5</option>
+            <option value="Room_Type 6" {{ 'selected' if room_type == 'Room_Type 6' }}>Room Type 6</option>
+            <option value="Room_Type 7" {{ 'selected' if room_type == 'Room_Type 7' }}>Room Type 7</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Lead Time</span>
+          <input type="number" class="form-control" name="lead_time" placeholder="Enter Lead Time" value="{{ lead_time }}">
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Market Segment Type</span>
+          <select class="form-select" name="market" id="market">
+            <option value="" disabled {{ 'selected' if not market }}>Select</option>
+            <option value="Online" {{ 'selected' if market == 'Online' }}>Online</option>
+            <option value="Offline" {{ 'selected' if market == 'Offline' }}>Offline</option>
+            <option value="Corporate" {{ 'selected' if market == 'Corporate' }}>Corporate</option>
+            <option value="Complementary" {{ 'selected' if market == 'Complementary' }}>Complementary</option>
+            <option value="Aviation" {{ 'selected' if market == 'Aviation' }}>Aviation</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Repeated</span>
+          <input type="number" class="form-control" name="repeated" placeholder="Enter Number of Repeated time" value="{{ repeated }}">
+        </div>
+      </div>
+
+      <!--
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">P-C</span>
+          <input type="number" class="form-control" name="pc" placeholder="Enter Number of P-C" value="{{ pc }}">
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">P-not-C</span>
+          <input type="number" class="form-control" name="pnotc" placeholder="Enter Number of P-not-C" value="{{ pnotc }}">
+        </div>
+      </div>
+      -->
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Price</span>
+          <input type="number" class="form-control" name="price" placeholder="Enter Average Price" value="{{ price }}" step="0.01">
+        </div>
+      </div>
+      
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Special Requests</span>
+          <input type="number" class="form-control" name="requests" placeholder="Enter Number of Special Requests" value="{{ requests }}">
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="input-group">
+            <span class="input-group-text">Reservation Date</span>
+            <input type="date" class="form-control" name="reservation_date" value="{{ reservation_date }}">
+        </div>
+    </div>
+
+      <div class="col-md-4 mb-3 d-flex justify-content-center">
+        <button type="submit" class="btn btn-custom">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  {% if not_valid %}
+    <div class="alert alert-danger mt-3" role="alert">
+        Please fill out all fields!
+    </div>
+  {% endif %}
+
+  {% if prediction %}
+  <div class="alert alert-info mt-3" role="alert">
+      Prediction: {{ 'Cancelled Reservation' if prediction == '1' else 'Not Cancelled Reservation' if prediction == '0' else 'Unknown Prediction' }}
+  </div>
+{% endif %}
+
+</div>
+{% endblock %}

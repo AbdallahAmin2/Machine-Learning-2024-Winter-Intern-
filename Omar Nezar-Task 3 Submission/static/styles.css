@@ -1,0 +1,56 @@
+/* Custom styles to enhance the look and feel */
+
+body {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+}

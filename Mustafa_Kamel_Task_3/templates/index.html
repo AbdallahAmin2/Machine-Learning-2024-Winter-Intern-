@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Classification</title>
+</head>
+<body>
+        <div class="card">
+            <div class="card-image">	
+                <h2 class="card-heading">
+                    Prediction of the Booking Status
+                </h2>
+            </div>
+            <form class="card-form" action="{{ url_for('home')}}" method="POST">
+                <div class="input">
+                    <input name="lead time" type="number" class="input-field" required value="{{ request.form['lead time'] }}" />
+                    <label class="input-label">Lead Time in days</label>
+                </div>
+                <div class="input">
+                    <input name="average price" type="number" class="input-field" required value="{{ request.form['average price'] }}" />
+                    <label class="input-label">Average Price</label>
+                </div>
+                <div class="input">
+                    <input name="special requests" type="number" class="input-field" required value="{{ request.form['special requests'] }}" />
+                    <label class="input-label">Number of Special Requests</label>
+                </div>
+                <div class="input">
+                    <select name="market_segment" class="input-field" required>
+                        <option value="" disabled selected>Select Market Segment Type</option>
+                        <option value="1" {% if request.form['market_segment'] == '1' %}selected{% endif %}>Corporate Market</option>
+                        <option value="2" {% if request.form['market_segment'] == '2' %}selected{% endif %}>Offline Market</option>
+                        <option value="3" {% if request.form['market_segment'] == '3' %}selected{% endif %}>Online Market</option>
+                        <option value="4" {% if request.form['market_segment'] == '4' %}selected{% endif %}>Other</option>
+                    </select>
+                    <label class="input-label">Market Segment Type</label>
+                </div>                
+                <div class="action">
+                    <button type="submit" class="action-button">Predict</button>
+                </div>
+            </form>
+            <div class="output">
+                <label class="output-label">{{ prediction_result }}</label>
+            </div>
+            <div class="action">
+                <a href="{{ url_for('batch_predict') }}" class="action-button">Batch Predict</a>
+            </div>                
+        </div>
+    </div>
+</body>
+</html>
