@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Hotel Booking</h1>
+<!-- 'car parking space','lead time','repeated','average price ','special requests','total nights','month'-->
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <!--<input type="text" name="type of meal" placeholder="type of meal" required="required" />-->
+      <label for="type of meal">type of meal:</label>
+        <select id="type of meal" name="type of meal" style="position: absolute; left: 150px;">
+            <option value="Meal Plan 1">Meal Plan 1</option>
+            <option value="Meal Plan 2">Meal Plan 2</option>
+            <option value="Meal Plan 3">Meal Plan 3</option>
+            <option value="Not Selected">Not Selected</option>
+        </select><br><br>
+    <label for="car parking space">car parking space:</label>
+    <input type="text" name="car parking space" placeholder="car parking space" required="required" style="position: absolute; left: 150px;"/><br><br>
+    <!--<input type="text" name="room type" placeholder="room type" required="required" />-->
+    <label for="room type">room type:</label>
+        <select id="room type" name="room type" style="position: absolute; left: 150px;">
+            <option value="Room_Type 1">Room_Type 1</option>
+            <option value="Room_Type 2">Room_Type 2</option>
+            <option value="Room_Type 3">Room_Type 3</option>
+            <option value="Room_Type 4">Room_Type 4</option>
+            <option value="Room_Type 5">Room_Type 5</option>
+            <option value="Room_Type 6">Room_Type 6</option>
+            <option value="Room_Type 7">Room_Type 7</option>
+        </select><br><br>
+    <label for="lead time">lead time:</label>
+    <input type="text" name="lead time" placeholder="lead time" required="required" style="position: absolute; left: 150px;"/><br><br>
+		<!--<input type="text" name="market segment type" placeholder="market segment type" required="required" />-->
+    <label for="market segment type">market segment type:</label>
+        <select id="market segment type" name="market segment type" style="position: absolute; left: 150px;">
+            <option value="Online">Online</option>
+            <option value="Offline">Online</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Complementary">Complementary</option>
+            <option value="Aviation">Aviation</option>
+        </select><br><br>
+    <label for="repeated">repeated:</label>
+    <input type="text" name="repeated" placeholder="repeated" required="required" style="position: absolute; left: 150px;" /><br><br>
+    <label for="average price">average price:</label>
+		<input type="text" name="average price" placeholder="average price" required="required" style="position: absolute; left: 150px;" /><br><br>
+    <label for="special requests">special requests:</label>
+    <input type="text" name="special requests" placeholder="special requests" required="required" style="position: absolute; left: 150px;" /><br><br>
+    <label for="total nights">total nights:</label>
+    <input type="text" name="total nights" placeholder="total nights" required="required" style="position: absolute; left: 150px;" /><br><br>
+    <label for="month">month:</label>
+    <input type="text" name="month" placeholder="month" required="required" style="position: absolute; left: 150px;"/><br><br>
+    <br>
+    <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large", style="position: absolute; left: 150px;">Predict</button>
+    </form>
+
+   <br>
+   <h1 style="position: absolute; left: 120px;">prediction</h1><br>
+    <br>
+    <br>
+    <br>
+   {% if prediction_text is not none %}
+        {% if prediction_text == '0' %}
+            <p style="position: absolute; left: 150px;">Not Canceled</p>
+        {% elif prediction_text == '1' %}
+            <p style="position: absolute; left: 150px;">Canceled</p>
+        {% else %}
+            <p style="position: absolute; left: 150px;">Invalid prediction</p>
+        {% endif %}
+    {% else %}
+        <p style="position: absolute; left: 120px;">No prediction made yet. Please submit the form.</p>
+    {% endif %}
+   <!--{{ prediction_text }}-->
+
+ </div>
+
+
+</body>
+</html>
