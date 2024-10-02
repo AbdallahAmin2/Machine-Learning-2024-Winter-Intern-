@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Status Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: white;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 50px;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        select,
+        input {
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Booking Status Prediction</h2>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="number_of_week_nights">Number of Week Nights:</label>
+                <input type="number" class="form-control" name="number_of_week_nights" required>
+            </div>
+            <div class="form-group">
+                <label for="lead_time">Lead Time:</label>
+                <input type="number" class="form-control" name="lead_time" required>
+            </div>
+            <div class="form-group">
+                <label for="repeated">Repeated (1 for Yes, 0 for No):</label>
+                <input type="number" class="form-control" name="repeated" required>
+            </div>
+            <div class="form-group">
+                <label for="average_price">Average Price:</label>
+                <input type="number" class="form-control" name="average_price" required>
+            </div>
+            <div class="form-group">
+                <label for="special_requests">Special Requests:</label>
+                <input type="text" class="form-control" name="special_requests" required>
+            </div>
+            <div class="form-group">
+                <label for="total_nights">Total Nights:</label>
+                <input type="number" class="form-control" name="total_nights" required>
+            </div>
+            <div class="form-group">
+                <label for="total_people">Total People:</label>
+                <input type="number" class="form-control" name="total_people" required>
+            </div>
+            <div class="form-group">
+                <label for="market_segment_type">Market Segment Type:</label>
+                <select class="form-control" name="market_segment_type">
+                    <option value="Corporate">Corporate</option>
+                    <option value="Online">Online</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reservation_year">Reservation Year:</label>
+                <input type="number" class="form-control" name="reservation_year" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <h4>Prediction Result: {{ prediction }}</h4>
+        {% endif %}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
