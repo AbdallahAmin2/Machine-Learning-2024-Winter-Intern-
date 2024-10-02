@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Booking States</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            width: 48%;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .prediction {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        .prediction span {
+            font-weight: bold;
+        }
+
+        /* Add responsive behavior */
+        @media (max-width: 600px) {
+            .form-group {
+                width: 100%;
+            }
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Booking States</h1>
+        <form method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Number of Adults:</label>
+                    <input type="number" name="number_of_adults" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Children:</label>
+                    <input type="number" name="number_of_children" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Weekend Nights:</label>
+                    <input type="number" name="number_of_weekend_nights" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Week Nights:</label>
+                    <input type="number" name="number_of_week_nights" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Type of Meal:</label>
+                    <select name="type_of_meal" required>
+                        <option value="Meal Plan 1">Meal Plan 1</option>
+                        <option value="Meal Plan 2">Meal Plan 2</option>
+                        <option value="Meal Plan 3">Meal Plan 3</option>
+                        <option value="Not Selected">Not Selected</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Car Parking Space:</label>
+                    <input type="number" name="car_parking_space" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Room Type:</label>
+                    <select name="room_type" required>
+                        <option value="Room_Type 1">Room_Type 1</option>
+                        <option value="Room_Type 2">Room_Type 2</option>
+                        <option value="Room_Type 3">Room_Type 3</option>
+                        <option value="Room_Type 4">Room_Type 4</option>
+                        <option value="Room_Type 5">Room_Type 5</option>
+                        <option value="Room_Type 6">Room_Type 6</option>
+                        <option value="Room_Type 7">Room_Type 7</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Lead Time:</label>
+                    <input type="number" name="lead_time" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Market Segment:</label>
+                    <select name="market_segment_type" required>
+                        <option value="Corporate">Corporate</option>
+                        <option value="Offline">Offline</option>
+                        <option value="Aviation">Aviation</option>
+                        <option value="Online">Online</option>
+                        <option value="Complementary">Complementary</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Repeated Guests:</label>
+                    <input type="number" name="repeated" required>
+                </div>
+
+                <div class="form-group">
+                    <label>P-C:</label>
+                    <input type="number" name="P_C" required>
+                </div>
+                <div class="form-group">
+                    <label>P-not-C:</label>
+                    <input type="number" name="P_not_C" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Average Price:</label>
+                    <input type="number" name="average_price" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Special Requests:</label>
+                    <input type="number" name="special_requests" required>
+                </div>
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction is not none %}
+            <div class="prediction">
+                Prediction: <span>{{ prediction }}</span>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
